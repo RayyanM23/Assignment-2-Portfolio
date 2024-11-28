@@ -36,7 +36,7 @@ router.get('/contactus', function(req, res, next) {
 /* GET login page. */
 router.get('/login', function(req, res, next) {
   if(!req.user){
-    res.render('auth/login', { 
+    res.render('Auth/login', { 
       title: 'Login',
       message:req.flash('loginMessage'),
       displayName:req.user ? req.user.displayName:''
@@ -65,7 +65,7 @@ router.post('/login', function(req,res,next){
 });
 router.get('/register', function(req,res,next){
   if(!req.user){
-    res.render('auth/register',{
+    res.render('Auth/register',{
       title:'Register',
       message:req.flash('registerMessage'),
       displayName: req.user ? req.user.displayName:''
@@ -88,7 +88,7 @@ router.post('/register', function(req,res,next){
       if(err.name=="UserExistError"){
         req.flash('registerMessage','Registration Error: User already exists')
       }
-      return res.render('auth/register',{
+      return res.render('Auth/register',{
         title:'Register',
         message:req.flash('registerMessage'),
         displayName:req.user ? req.user.displayName:''
